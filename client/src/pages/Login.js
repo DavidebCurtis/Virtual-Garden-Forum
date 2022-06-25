@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
@@ -75,7 +75,6 @@ export default function Login() {
     } catch (e) {
       console.error(e);
     }
-
   };
 
   return (
