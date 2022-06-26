@@ -21,7 +21,7 @@ const Forum = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Search />
+      {/* <Search /> */}
       {loading ? (
         <div>Loading....</div>
       ) : (
