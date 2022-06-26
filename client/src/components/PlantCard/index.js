@@ -44,11 +44,27 @@ export default function PlantCard({ plantInfo }) {
       />
       <CardContent
         sx={{
-          width: '60%',
+          width: '100%',
         }}
       >
         <Typography gutterBottom variant='h4' component='div'>
           {plantInfo.scientific_name}
+          <Chip
+            sx={{
+              fontSize: '11px',
+              width: 125,
+              height: 28,
+              cursor: 'pointer',
+              ml: 1,
+              ':hover': {
+                borderColor: 'green',
+              },
+            }}
+            icon={<AddIcon />}
+            onClick={handleClickOpen}
+            label='Edit Plant Info'
+            variant='outlined'
+          />
         </Typography>
         <Typography gutterBottom variant='h6' component='div'>
           {plantInfo.common_name}
@@ -62,22 +78,7 @@ export default function PlantCard({ plantInfo }) {
         <Typography variant='body1' color='text.secondary'>
           Water: {plantInfo.water}
         </Typography>
-        <Chip
-          sx={{
-            fontSize: '11px',
-            width: 125,
-            height: 28,
-            cursor: 'pointer',
-            m: 3,
-            ':hover': {
-              borderColor: 'green',
-            },
-          }}
-          icon={<AddIcon />}
-          onClick={handleClickOpen}
-          label='Edit Plant Info'
-          variant='outlined'
-        />
+
         <UpdatePlant
           open={open}
           handleClose={handleClose}

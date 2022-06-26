@@ -44,6 +44,7 @@ const Plant = () => {
         }}
       >
         <PlantCard plantInfo={plant} />
+        <PlantHistoryForm plantId={plant._id} />
         <Box
           sx={{
             display: 'flex',
@@ -57,7 +58,7 @@ const Plant = () => {
           {plant.plantHistory && <PlantHistory history={plant.plantHistory} />}
           <Divider orientation='vertical' />
           {/* {Auth.loggedIn() && */}
-          <PlantHistoryForm plantId={plant._id} />
+
           {/* //  } */}
         </Box>
       </Box>

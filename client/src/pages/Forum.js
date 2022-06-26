@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client';
 import ForumPosts from '../components/ForumPosts';
 import Search from '../components/ForumPosts/Search';
 import NewPost from '../components/NewPost';
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -15,6 +16,7 @@ const theme = createTheme({
     },
   },
 });
+
 const Forum = () => {
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];

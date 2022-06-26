@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import NewPost from '../NewPost';
 import Link from '@mui/material/Link';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import Auth from '../../utils/auth';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body1,
@@ -51,17 +52,18 @@ const ForumPosts = ({ posts, postText }) => {
           backgroundColor: '#f2f2f2',
           pl: '20%',
           pr: '20%',
+          pt: '3%',
           width: 'auto',
           m: 0,
         }}
       >
-        <NewPost />
+        {Auth.loggedIn() && <NewPost />}
 
         {posts &&
           posts.slice(0, 8).map((posts) => (
             <Grid
               sx={{
-                mt: 1,
+                mb: 1,
                 '&:hover': { border: 0.1 },
               }}
               item

@@ -12,14 +12,10 @@ import '../../index.css';
 import UpdatePlant from '../UpdatePlant';
 
 const NewItem = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#f3f3f5',
   ...theme.typography.body1,
   padding: theme.spacing(4),
   textAlign: 'center',
   overflow: 'hidden',
-  height: 450,
-  width: 450,
-  color: theme.palette.text.secondary,
 }));
 
 const PlantHistoryForm = ({ plantId }) => {
@@ -52,32 +48,39 @@ const PlantHistoryForm = ({ plantId }) => {
         onSubmit={handleSubmit}
         component='form'
         sx={{
-          display: 'grid',
           gap: 4,
-          '& .MuiTextField-root': { m: 1, width: '45ch' },
-          m: 7,
+          '& .MuiTextField-root': { m: 0, pb: 1, width: '100%' },
+          p: 0,
           pt: 1.5,
-          px: 2,
+          pb: 2,
+          margin: 'auto',
+          width: '60%',
         }}
         noValidate
         autoComplete='off'
       >
-        <NewItem elevation={10}>
+        <NewItem elevation={1} sx={{ width: '100%' }}>
           <TextField
             onChange={handleChange}
             id='noteBody'
             name='noteBody'
             value={noteBody}
-            label='Plant History Entry Text'
+            label='Plant Note Entry Text'
             variant='outlined'
+            sx={{ m: 50 }}
           />
           <Button
             type='submit'
             variant='contained'
             size='large'
-            sx={{ mb: 2, width: '90%' }}
+            sx={{
+              mb: 2,
+              width: '100%',
+              backgroundColor: '#4caf50',
+              '&:hover': { backgroundColor: '#4caf50' },
+            }}
           >
-            Add Plant History Entry
+            Add note
           </Button>
         </NewItem>
       </Grid>
