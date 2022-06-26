@@ -97,7 +97,7 @@ export default function Login() {
           </Typography>
           {error && (
             <Alert sx={{ mt: 2 }} variant='outlined' severity='error'>
-              Login Failed
+              Invalid username or password
             </Alert>
           )}
           <Box

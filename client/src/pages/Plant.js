@@ -1,62 +1,61 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
 
-import PlantCard from "../components/PlantCard";
+import PlantCard from '../components/PlantCard';
 
-import { QUERY_PLANT } from "../utils/queries";
-import Auth from "../utils/auth";
-import PlantHistoryForm from "../components/PlantHistoryForm";
-import PlantHistory from "../components/PlantHistory";
+import { QUERY_PLANT } from '../utils/queries';
+import Auth from '../utils/auth';
+import PlantHistoryForm from '../components/PlantHistoryForm';
+import PlantHistory from '../components/PlantHistory';
 
-import { Box, Divider, Paper } from "@mui/material";
-// import Paper from "@mui/material/Paper";
-import Malvestida from "../assets/images/malvestida.jpg";
+import { Box, Divider, Paper } from '@mui/material';
 
 const Plant = () => {
-  // get the plant id from the url parameters
   const { id: plantId } = useParams();
-  console.log(plantId);
-  // query the plant using the plantId as the query variable
   const { loading, data } = useQuery(QUERY_PLANT, {
     variables: { id: plantId },
   });
-  // when query returns data, send it to the plant variable
-  // note: plantHistory is an array inside the plant model
+
   const plant = data?.plant || {};
-  console.log(plant);
-  // while waiting for data, let the user know
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
     <Box
-      className="image"
+      className='image'
       style={{
-        backgroundImage: `url(${Malvestida})`,
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
-        backgroundSize: "cover",
-        height: "100vh",
-        color: "#f5f5f5",
-        backgroundPosition: "left",
-        width: "100vw",
+        color: '#f5f5f5',
+        backgroundColor: '#f2f2f2',
+        pl: '20%',
+        pr: '20%',
+        width: 'auto',
+        m: 0,
       }}
     >
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center ",
-          backgroundColor: "transparent",
-          width: "100vw",
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center ',
+          backgroundColor: 'transparent',
         }}
       >
         <PlantCard plantInfo={plant} />
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            margin: 'auto',
+            width: '60%',
+          }}
+        >
           {plant.plantHistory && <PlantHistory history={plant.plantHistory} />}
-          <Divider orientation="vertical" />
+          <Divider orientation='vertical' />
           {/* {Auth.loggedIn() && */}
           <PlantHistoryForm plantId={plant._id} />
           {/* //  } */}

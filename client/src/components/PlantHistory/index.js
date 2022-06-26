@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Grid,
   Typography,
@@ -9,26 +9,30 @@ import {
   ListItemText,
   Divider,
   List,
-} from "@mui/material";
-import { green, grey } from "@mui/material/colors";
+} from '@mui/material';
+import { green, grey } from '@mui/material/colors';
 
 const PlantHistory = ({ history }) => {
   return (
-    <Box sx={{ width: "100vw" }}>
+    <Box>
       <Typography
-        variant="h6"
-        sx={{ p: 2, bgcolor: green[500], color: "white" }}
+        variant='h6'
+        sx={{ p: 2, bgcolor: green[500], color: 'white' }}
       >
-        Plant History
+        Plant Notes
       </Typography>
       <Divider />
-      <List sx={{ width: "100%" }}>
+      <List sx={{ width: '100%', backgroundColor: '#ecf8e0' }}>
         {history &&
           history.map((history) => (
-            <ListItem className="plantList" style={{ textDecoration: "none" }}>
+            <ListItem
+              className='plantList'
+              style={{ textDecoration: 'none' }}
+              sx={{ mt: 1, backgroundColor: '#fcfffc' }}
+            >
               <ListItemText>
                 <h6>{history.createdAt}:</h6>
-                <Divider variant="inset" component="li" />
+                <Divider component='li' sx={{ mb: 1 }} />
                 {history.note_body}
               </ListItemText>
             </ListItem>

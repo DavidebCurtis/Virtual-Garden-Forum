@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Paper from "@mui/material/Paper";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import { useMutation } from "@apollo/client";
-import { ADD_PLANT_HISTORY } from "../../utils/mutations";
-import Auth from "../../utils/auth";
-import "../../index.css";
-import UpdatePlant from "../UpdatePlant";
+import React, { useState } from 'react';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import { useMutation } from '@apollo/client';
+import { ADD_PLANT_HISTORY } from '../../utils/mutations';
+import Auth from '../../utils/auth';
+import '../../index.css';
+import UpdatePlant from '../UpdatePlant';
 
 const NewItem = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#f3f3f5",
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#f3f3f5',
   ...theme.typography.body1,
   padding: theme.spacing(4),
-  textAlign: "center",
-  overflow: "hidden",
+  textAlign: 'center',
+  overflow: 'hidden',
   height: 450,
   width: 450,
   color: theme.palette.text.secondary,
@@ -24,7 +24,7 @@ const NewItem = styled(Paper)(({ theme }) => ({
 
 const PlantHistoryForm = ({ plantId }) => {
   const [addPlantHistory, { error }] = useMutation(ADD_PLANT_HISTORY);
-  const [noteBody, setNoteBody] = useState("");
+  const [noteBody, setNoteBody] = useState('');
 
   const handleChange = (event) => {
     setNoteBody(event.target.value);
@@ -37,7 +37,7 @@ const PlantHistoryForm = ({ plantId }) => {
         variables: { plantId, noteBody },
       });
       Auth.loggedIn();
-      setNoteBody("");
+      setNoteBody('');
     } catch (e) {
       console.error(e);
     }
@@ -47,35 +47,35 @@ const PlantHistoryForm = ({ plantId }) => {
     <>
       <Grid
         container
-        direction="column"
-        justifyContent="center"
+        direction='column'
+        justifyContent='center'
         onSubmit={handleSubmit}
-        component="form"
+        component='form'
         sx={{
-          display: "grid",
+          display: 'grid',
           gap: 4,
-          "& .MuiTextField-root": { m: 1, width: "45ch" },
+          '& .MuiTextField-root': { m: 1, width: '45ch' },
           m: 7,
           pt: 1.5,
           px: 2,
         }}
         noValidate
-        autoComplete="off"
+        autoComplete='off'
       >
         <NewItem elevation={10}>
           <TextField
             onChange={handleChange}
-            id="noteBody"
-            name="noteBody"
+            id='noteBody'
+            name='noteBody'
             value={noteBody}
-            label="Plant History Entry Text"
-            variant="outlined"
+            label='Plant History Entry Text'
+            variant='outlined'
           />
           <Button
-            type="submit"
-            variant="contained"
-            size="large"
-            sx={{ mb: 2, width: "90%" }}
+            type='submit'
+            variant='contained'
+            size='large'
+            sx={{ mb: 2, width: '90%' }}
           >
             Add Plant History Entry
           </Button>

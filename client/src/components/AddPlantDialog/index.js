@@ -22,6 +22,18 @@ import { searchPlants } from '../../utils/API';
 import { useMutation } from '@apollo/client';
 import { QUERY_PLANT, ME } from '../../utils/queries';
 import { ADD_PLANT } from '../../utils/mutations';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#4caf50',
+    },
+    secondary: {
+      main: '#64dd20',
+    },
+  },
+});
 
 export default function AddPlantDialog({ open, handleClose }) {
   //loading bar items
@@ -83,6 +95,14 @@ export default function AddPlantDialog({ open, handleClose }) {
     });
   };
 
+  const handleCommonName = (event) => {
+    setcommonName(event.target.value);
+  };
+
+  const handleScientificName = (event) => {
+    setscientificName(event.target.value);
+  };
+
   const handlePruning = (event) => {
     setPruning(event.target.value);
   };
@@ -126,7 +146,7 @@ export default function AddPlantDialog({ open, handleClose }) {
   };
 
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <Dialog align='center' open={open} onClose={handleClose}>
         <DialogTitle>Upload an image to identify a new plant!</DialogTitle>
 
@@ -155,7 +175,7 @@ export default function AddPlantDialog({ open, handleClose }) {
               multiple
             /> */}
 
-            <DialogActions align='center'>
+            <DialogActions>
               <Button
                 variant='contained'
                 onClick={() => {
@@ -164,6 +184,7 @@ export default function AddPlantDialog({ open, handleClose }) {
                 }}
                 sx={{
                   backgroundColor: '#4caf50',
+                  color: 'white',
                   '&:hover': { backgroundColor: '#4caf50' },
                   margin: 'auto',
                   mt: 2,
@@ -191,30 +212,25 @@ export default function AddPlantDialog({ open, handleClose }) {
         </DialogContent>
         <DialogContent>
           <TextField
-            autoFocus
             margin='dense'
             label='Common Plant Name'
             type='text'
-            // key={common_name}
             fullWidth
             variant='standard'
             value={commonName || ''}
+            onChange={handleCommonName}
           />
           <TextField
-            autoFocus
             margin='dense'
-            id='name'
             label='Scientific Plant Name'
             type='text'
-            // key={scientific_name}
             fullWidth
             variant='standard'
             value={scientificName || ''}
+            onChange={handleScientificName}
           />
           <TextField
-            autoFocus
             margin='dense'
-            id='name'
             label='Pruning Info'
             type='text'
             fullWidth
@@ -223,9 +239,7 @@ export default function AddPlantDialog({ open, handleClose }) {
             onChange={handlePruning}
           />
           <TextField
-            autoFocus
             margin='dense'
-            id='name'
             label='Watering Info'
             type='text'
             fullWidth
@@ -234,9 +248,7 @@ export default function AddPlantDialog({ open, handleClose }) {
             onChange={handleWatering}
           />
           <TextField
-            autoFocus
             margin='dense'
-            id='name'
             label='Fertilizing Info'
             type='text'
             fullWidth
@@ -270,6 +282,6 @@ export default function AddPlantDialog({ open, handleClose }) {
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </ThemeProvider>
   );
 }
