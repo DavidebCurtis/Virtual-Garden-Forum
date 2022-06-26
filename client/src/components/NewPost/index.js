@@ -67,7 +67,7 @@ export default function NewPost() {
               id='postTitle'
               name='postTitle'
               value={formState.postTitle}
-              label='New Post Title'
+              label='Post Title'
               variant='outlined'
               sx={{ mb: 2, width: '100%' }}
             ></TextField>
@@ -76,7 +76,7 @@ export default function NewPost() {
               id='postText'
               name='postText'
               value={formState.postText}
-              label='New Post Body'
+              label='Post Body'
               multiline
               rows={4}
               sx={{ mb: 2, width: '100%' }}

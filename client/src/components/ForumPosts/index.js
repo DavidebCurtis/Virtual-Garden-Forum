@@ -71,7 +71,7 @@ const ForumPosts = ({ posts, postText }) => {
               <Item
                 elevation={1}
                 sx={{
-                  backgroundColor: '#ffffff',
+                  backgroundColor: '#fcfffc',
                   pb: 1,
                   pt: 2,
                   height: '248px',
@@ -93,7 +93,7 @@ const ForumPosts = ({ posts, postText }) => {
                       sx={{
                         fontSize: 25,
                         fontWeight: 'bold',
-                        color: '#757575',
+                        color: '#5f5e5e',
                       }}
                     >
                       {posts.postTitle}
@@ -101,7 +101,12 @@ const ForumPosts = ({ posts, postText }) => {
                   </Grid>
                   <Grid
                     item
-                    sx={{ height: '115px', overflow: 'hidden', mb: 2 }}
+                    sx={{
+                      height: '115px',
+                      overflow: 'hidden',
+                      mb: 2,
+                      color: '#606060',
+                    }}
                   >
                     <Typography sx={{ fontSize: 20 }}>
                       {posts.postText}
@@ -113,6 +118,7 @@ const ForumPosts = ({ posts, postText }) => {
                       color: '#4caf50',
                       width: '150px',
                       p: 1,
+                      pl: 0.5,
                       '&:hover': {
                         background: '#f2f2f2',
                         borderRadius: '5px',
