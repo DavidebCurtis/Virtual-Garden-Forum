@@ -17,7 +17,6 @@ const NewItem = styled(Paper)(({ theme }) => ({
   overflow: 'hidden',
   height: 450,
   width: 450,
-  color: theme.palette.text.secondary,
 }));
 
 export default function NewPost() {
