@@ -13,12 +13,8 @@ import { Link } from 'react-router-dom';
 import { Navigate, useParams } from 'react-router-dom';
 
 export default function Garden({ plants, user }) {
-  // const handleClick = () => {
-  //   console.log("You clicked Add Plant");
-  // };
   const [open, setOpen] = React.useState(false);
 
-  // //button open/close
   const handleClickOpen = () => {
     setOpen(true);
   };

@@ -64,7 +64,6 @@ const Profile = () => {
       for (let i = 0; i < friendCheck.friends.length; i++) {
         if (friendCheck.friends[i].username === username) {
           setIsFriend(true);
-          console.log(isfriend);
         }
       }
     }
