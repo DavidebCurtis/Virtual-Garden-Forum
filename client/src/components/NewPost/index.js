@@ -43,9 +43,9 @@ export default function NewPost() {
     } catch (e) {
       console.error(e);
     }
-    if (Auth.loggedIn === false) {
-      console.log('heyyyyyy');
-      window.alert('You must sign in to create a post!');
+    if (Auth.loggedIn() === false) {
+      // event.preventDefault();
+      window.alert('You must sign in to create a post.');
     }
   };
 

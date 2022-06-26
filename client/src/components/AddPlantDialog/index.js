@@ -1,5 +1,5 @@
-import * as React from "react";
-import { useState, useRef } from "react";
+import * as React from 'react';
+import { useState, useRef } from 'react';
 //destructure all the items from "@mui/material"
 import {
   Button,
@@ -12,15 +12,16 @@ import {
   Box,
   CircularProgress,
   Fab,
-} from "@mui/material";
-import CheckIcon from "@mui/icons-material/Check";
-import SaveIcon from "@mui/icons-material/Save";
+  Input,
+} from '@mui/material';
+import CheckIcon from '@mui/icons-material/Check';
+import SaveIcon from '@mui/icons-material/Save';
 
-import { green } from "@mui/material/colors";
-import { searchPlants } from "../../utils/API";
-import { useMutation } from "@apollo/client";
-import { QUERY_PLANT, ME } from "../../utils/queries";
-import { ADD_PLANT } from "../../utils/mutations";
+import { green } from '@mui/material/colors';
+import { searchPlants } from '../../utils/API';
+import { useMutation } from '@apollo/client';
+import { QUERY_PLANT, ME } from '../../utils/queries';
+import { ADD_PLANT } from '../../utils/mutations';
 
 export default function AddPlantDialog({ open, handleClose }) {
   //loading bar items
@@ -31,7 +32,7 @@ export default function AddPlantDialog({ open, handleClose }) {
   const buttonSx = {
     ...(success && {
       bgcolor: green[500],
-      "&:hover": {
+      '&:hover': {
         bgcolor: green[700],
       },
     }),
@@ -42,6 +43,7 @@ export default function AddPlantDialog({ open, handleClose }) {
       clearTimeout(timer.current);
     };
   }, []);
+
   //starts timer for load icon
   const handleButtonClick = () => {
     if (!loading) {
@@ -53,17 +55,15 @@ export default function AddPlantDialog({ open, handleClose }) {
       }, 6000);
     }
   };
-  //plant search setup
+
   const plantFile = useRef();
   const [plantImg, setPlantImg] = useState([]);
-  //change these to proper names below
   const [commonName, setcommonName] = useState();
   const [scientificName, setscientificName] = useState();
   const [imagePath, setImagePath] = useState();
-  // Add Pruning, Watering and Fertilization
-  const [pruning, setPruning] = useState("");
-  const [water, setWatering] = useState("");
-  const [fertilization, setFertilization] = useState("");
+  const [pruning, setPruning] = useState('');
+  const [water, setWatering] = useState('');
+  const [fertilization, setFertilization] = useState('');
 
   //upload plant file
   const onFileChange = (event) => {
@@ -81,9 +81,6 @@ export default function AddPlantDialog({ open, handleClose }) {
       // console.log(res.suggestions[0].plant_details.scientific_name);
       // console.log(res.suggestions[0].similar_images[0].url);
     });
-    console.log(commonName);
-    console.log(scientificName);
-    console.log(imagePath);
   };
 
   const handlePruning = (event) => {
@@ -98,8 +95,8 @@ export default function AddPlantDialog({ open, handleClose }) {
     setFertilization(event.target.value);
   };
 
+  // add plant on sumbission
   const [addPlant, { error }] = useMutation(ADD_PLANT);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -116,13 +113,13 @@ export default function AddPlantDialog({ open, handleClose }) {
       });
       console.log(data);
       // clear form values
-      setPlantImg("");
-      setImagePath("");
-      setcommonName("");
-      setscientificName("");
-      setPruning("");
-      setWatering("");
-      setFertilization("");
+      setPlantImg('');
+      setImagePath('');
+      setcommonName('');
+      setscientificName('');
+      setPruning('');
+      setWatering('');
+      setFertilization('');
     } catch (e) {
       console.error(e);
     }
@@ -130,26 +127,46 @@ export default function AddPlantDialog({ open, handleClose }) {
 
   return (
     <div>
-      <Dialog align="center" open={open} onClose={handleClose}>
-        <DialogTitle>Add a New Plant</DialogTitle>
+      <Dialog align='center' open={open} onClose={handleClose}>
+        <DialogTitle>Upload an image to identify a new plant!</DialogTitle>
 
         <DialogContent>
           <div>
-            <label>Upload an image to identify a new plant!</label>
-            <input
+            <Input
+              accept='image/*'
+              style={{ input: 'hidden' }}
+              id='raised-button-file'
+              multiple
+              type='file'
               ref={plantFile}
-              type="file"
+              onChange={onFileChange}
+            />
+            {/* <label htmlFor='raised-button-file'>
+              <Button variant='raised' component='span'>
+                Choose File
+              </Button>
+            </label> */}
+
+            {/* <Input
+              ref={plantFile}
+              type='file'
               // style={{ display: "none" }}
               onChange={onFileChange}
               multiple
-            />
+            /> */}
 
-            <DialogActions align="center">
+            <DialogActions align='center'>
               <Button
-                variant="contained"
+                variant='contained'
                 onClick={() => {
                   handleSearch();
                   handleButtonClick();
+                }}
+                sx={{
+                  backgroundColor: '#4caf50',
+                  '&:hover': { backgroundColor: '#4caf50' },
+                  margin: 'auto',
+                  mt: 2,
                 }}
               >
                 {success ? <CheckIcon /> : <SaveIcon />}
@@ -160,7 +177,7 @@ export default function AddPlantDialog({ open, handleClose }) {
                   size={68}
                   sx={{
                     color: green[500],
-                    position: "absolute",
+                    position: 'absolute',
                     top: -6,
                     left: -6,
                     zIndex: 1,
@@ -175,63 +192,80 @@ export default function AddPlantDialog({ open, handleClose }) {
         <DialogContent>
           <TextField
             autoFocus
-            margin="dense"
-            label="Common Plant Name"
-            type="text"
+            margin='dense'
+            label='Common Plant Name'
+            type='text'
             // key={common_name}
             fullWidth
-            variant="standard"
-            value={commonName || ""}
+            variant='standard'
+            value={commonName || ''}
           />
           <TextField
             autoFocus
-            margin="dense"
-            id="name"
-            label="Scientific Plant Name"
-            type="text"
+            margin='dense'
+            id='name'
+            label='Scientific Plant Name'
+            type='text'
             // key={scientific_name}
             fullWidth
-            variant="standard"
-            value={scientificName || ""}
+            variant='standard'
+            value={scientificName || ''}
           />
           <TextField
             autoFocus
-            margin="dense"
-            id="name"
-            label="Pruning Info"
-            type="text"
+            margin='dense'
+            id='name'
+            label='Pruning Info'
+            type='text'
             fullWidth
-            variant="standard"
+            variant='standard'
             value={pruning}
             onChange={handlePruning}
           />
           <TextField
             autoFocus
-            margin="dense"
-            id="name"
-            label="Watering Info"
-            type="text"
-            variant="standard"
+            margin='dense'
+            id='name'
+            label='Watering Info'
+            type='text'
+            fullWidth
+            variant='standard'
             value={water}
             onChange={handleWatering}
           />
           <TextField
             autoFocus
-            margin="dense"
-            id="name"
-            label="Fertilizing Info"
-            type="text"
+            margin='dense'
+            id='name'
+            label='Fertilizing Info'
+            type='text'
             fullWidth
-            variant="standard"
+            variant='standard'
             value={fertilization}
             onChange={handleFertilization}
           />
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" onClick={handleClose}>
+          <Button
+            variant='outlined'
+            onClick={handleClose}
+            sx={{
+              color: '#4caf50',
+              border: '1px solid #4caf50',
+              '&:hover': { border: '1px solid #4caf50', fontWeight: 'bold' },
+            }}
+          >
             Close
           </Button>
-          <Button variant="outlined" onClick={handleSubmit}>
+          <Button
+            variant='outlined'
+            onClick={handleSubmit}
+            sx={{
+              color: '#4caf50',
+              border: '1px solid #4caf50',
+              '&:hover': { border: '1px solid #4caf50', fontWeight: 'bold' },
+            }}
+          >
             Add Plant
           </Button>
         </DialogActions>
