@@ -109,7 +109,7 @@ const Profile = () => {
                 <Typography>
                   <strong>Joined:</strong> {user.createdAt}
                 </Typography>
-                {userParam && !isfriend && (
+                {userParam && !isfriend ? (
                   <Chip
                     sx={{
                       fontSize: '11px',
@@ -126,7 +126,7 @@ const Profile = () => {
                     variant='outlined'
                     onClick={handleClick}
                   />
-                )}
+                ) : null}
               </Container>
             </Grid>
           </Grid>

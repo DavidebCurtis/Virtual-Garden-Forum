@@ -10,6 +10,7 @@ import { ADD_PLANT_HISTORY } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import '../../index.css';
 import UpdatePlant from '../UpdatePlant';
+import TextareaAutosize from '@mui/base/TextareaAutosize';
 
 const NewItem = styled(Paper)(({ theme }) => ({
   ...theme.typography.body1,
@@ -60,14 +61,22 @@ const PlantHistoryForm = ({ plantId }) => {
         autoComplete='off'
       >
         <NewItem elevation={1} sx={{ width: '100%' }}>
-          <TextField
+          <TextareaAutosize
             onChange={handleChange}
             id='noteBody'
             name='noteBody'
             value={noteBody}
-            label='Plant Note Entry Text'
-            variant='outlined'
+            placeholder='Write a note about your plant'
+            rows={4}
+            minRows={4}
+            maxRows={4}
             sx={{ m: 50 }}
+            style={{
+              width: '100%',
+              minWidth: '100%',
+              maxWidth: '100%',
+              resize: 'none',
+            }}
           />
           <Button
             type='submit'

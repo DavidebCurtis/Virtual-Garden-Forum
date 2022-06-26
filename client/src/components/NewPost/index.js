@@ -9,14 +9,12 @@ import { Container, Box } from '@mui/material';
 import { ADD_POST } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
+import TextareaAutosize from '@mui/base/TextareaAutosize';
 
 const NewItem = styled(Paper)(({ theme }) => ({
   ...theme.typography.body1,
   padding: theme.spacing(4),
-  textAlign: 'center',
   overflow: 'hidden',
-  height: 450,
-  width: 450,
 }));
 
 export default function NewPost() {
@@ -50,37 +48,60 @@ export default function NewPost() {
   };
 
   return (
-    <Box sx={{ pt: 2 }}>
+    <Box sx={{ pt: 2, pb: 1 }}>
       <Grid container onSubmit={handleSubmit}>
         <Grid container component='form' noValidate autoComplete='off'>
-          <NewItem sx={{ width: '100%', height: 'auto' }} elevation={1}>
+          <NewItem sx={{ width: '100%', height: 'auto', pb: 1 }} elevation={1}>
             <Button
               type='submit'
               variant='contained'
               size='large'
-              sx={{ mb: 2, width: '100%', color: 'white' }}
+              sx={{ mb: 4, mr: '3%', p: 0.7, color: 'white' }}
+              style={{
+                width: '25%',
+                minWidth: '25%',
+                maxWidth: '25%',
+              }}
             >
-              Create New Post
+              Create Post
             </Button>
-            <TextField
+            <TextareaAutosize
               onChange={handleChange}
               id='postTitle'
               name='postTitle'
               value={formState.postTitle}
-              label='Post Title'
               variant='outlined'
-              sx={{ mb: 2, width: '100%' }}
-            ></TextField>
-            <TextField
-              onChange={handleChange}
-              id='postText'
-              name='postText'
-              value={formState.postText}
-              label='Post Body'
-              multiline
-              rows={4}
-              sx={{ mb: 2, width: '100%' }}
-            />
+              sx={{
+                mb: 2,
+                display: 'inline-block',
+              }}
+              rows={1}
+              maxRows={1}
+              noWrap
+              placeholder='Create a Title'
+              style={{
+                resize: 'none',
+                width: '72%',
+                minWidth: '72%',
+                maxWidth: '72%',
+                height: '38px',
+                textAlign: 'center',
+                fontSize: '27px',
+                fontFamily: 'sans-serif',
+              }}
+            ></TextareaAutosize>
+            {postTitle && (
+              <TextField
+                onChange={handleChange}
+                id='postText'
+                name='postText'
+                value={formState.postText}
+                label='Post Body'
+                multiline
+                rows={4}
+                sx={{ mb: 2, width: '100%' }}
+              />
+            )}
           </NewItem>
         </Grid>
       </Grid>

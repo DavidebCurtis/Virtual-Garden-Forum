@@ -10,8 +10,7 @@ import { Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import AddPlantDialog from '../AddPlantDialog';
 import { Link } from 'react-router-dom';
-
-
+import { Navigate, useParams } from 'react-router-dom';
 
 export default function Garden({ plants, user }) {
   // const handleClick = () => {
@@ -27,27 +26,31 @@ export default function Garden({ plants, user }) {
     setOpen(false);
   };
 
+  const { username: userParam } = useParams();
+
   return (
     <ImageList>
       <ImageListItem key='Subheader' cols={2}>
         <ListSubheader sx={{ fontSize: '24px' }} component='div'>
           {user}'s Garden
-          <Chip
-            sx={{
-              fontSize: '11px',
-              width: 100,
-              height: 28,
-              cursor: 'pointer',
-              m: 3,
-              ':hover': {
-                borderColor: 'green',
-              },
-            }}
-            icon={<AddIcon />}
-            onClick={handleClickOpen}
-            label='Add Plant'
-            variant='outlined'
-          />
+          {!userParam && (
+            <Chip
+              sx={{
+                fontSize: '11px',
+                width: 100,
+                height: 28,
+                cursor: 'pointer',
+                m: 3,
+                ':hover': {
+                  borderColor: 'green',
+                },
+              }}
+              icon={<AddIcon />}
+              onClick={handleClickOpen}
+              label='Add Plant'
+              variant='outlined'
+            />
+          )}
           <AddPlantDialog open={open} handleClose={handleClose} />
         </ListSubheader>
       </ImageListItem>

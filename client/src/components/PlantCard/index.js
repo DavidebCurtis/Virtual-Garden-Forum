@@ -48,7 +48,7 @@ export default function PlantCard({ plantInfo }) {
         }}
       >
         <Typography gutterBottom variant='h4' component='div'>
-          {plantInfo.scientific_name}
+          {plantInfo.common_name}
           <Chip
             sx={{
               fontSize: '11px',
@@ -66,17 +66,22 @@ export default function PlantCard({ plantInfo }) {
             variant='outlined'
           />
         </Typography>
-        <Typography gutterBottom variant='h6' component='div'>
-          {plantInfo.common_name}
+        <Typography
+          gutterBottom
+          variant='h6'
+          component='div'
+          style={{ fontStyle: 'italic' }}
+        >
+          {plantInfo.scientific_name}
         </Typography>
         <Typography variant='body1' color='text.secondary'>
-          Pruning: {plantInfo.pruning}
+          <strong>Pruning:</strong> {plantInfo.pruning}
         </Typography>
         <Typography variant='body1' color='text.secondary'>
-          Fertilization: {plantInfo.fertilization}
+          <strong>Fertilization:</strong> {plantInfo.fertilization}
         </Typography>
         <Typography variant='body1' color='text.secondary'>
-          Water: {plantInfo.water}
+          <strong>Water:</strong> {plantInfo.water}
         </Typography>
 
         <UpdatePlant
