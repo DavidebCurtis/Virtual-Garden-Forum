@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { ADD_PLANT_HISTORY } from '../../utils/mutations';
+import { Navigate, useParams } from 'react-router-dom';
+
+import { ME } from '../../utils/queries';
+
 import Auth from '../../utils/auth';
 import '../../index.css';
 import UpdatePlant from '../UpdatePlant';
@@ -39,6 +43,16 @@ const PlantHistoryForm = ({ plantId }) => {
       console.error(e);
     }
   };
+
+  // const [isOwner, setIsOwner] = useState();
+  // const { data } = useQuery(ME);
+  // const user = data?.me || {};
+  // const { id } = useParams();
+
+  // useEffect(() => {
+  //   user.plants.find((o) => o._id === !id);
+  //   console.log('HEY');
+  // });
 
   return (
     <>

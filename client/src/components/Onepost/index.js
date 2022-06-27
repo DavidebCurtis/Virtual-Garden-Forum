@@ -34,7 +34,7 @@ const Onepost = ({ post, postText }) => {
         pr: '20%',
         width: 'auto',
         m: 0,
-        height: '100vh',
+        minHeight: '100vh',
       }}
     >
       <Leftitem>
@@ -55,7 +55,7 @@ const Onepost = ({ post, postText }) => {
           <Typography
             variant='h5'
             sx={{
-              height: '115px',
+              // height: '115px',
               overflow: 'hidden',
               mb: 1,
               color: '#606060',

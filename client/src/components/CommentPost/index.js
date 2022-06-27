@@ -65,6 +65,7 @@ const CommentPost = ({ post, postText }) => {
         pr: '20%',
         width: 'auto',
         m: 0,
+        minHeight: '100vh',
       }}
     >
       <Leftitem>
@@ -85,7 +86,7 @@ const CommentPost = ({ post, postText }) => {
           <Typography
             variant='h5'
             sx={{
-              height: '115px',
+              // height: '115px',
               overflow: 'hidden',
               mb: 1,
               color: '#606060',
