@@ -31,7 +31,7 @@ const PlantHistory = ({ history }) => {
               sx={{ mt: 1, backgroundColor: '#fcfffc' }}
             >
               <ListItemText>
-                <h6>{history.createdAt}:</h6>
+                <h6>{history.createdAt}</h6>
                 <Divider component='li' sx={{ mb: 1 }} />
                 {history.note_body}
               </ListItemText>

@@ -27,7 +27,10 @@ export default function Garden({ plants, user }) {
   return (
     <ImageList>
       <ImageListItem key='Subheader' cols={2}>
-        <ListSubheader sx={{ fontSize: '24px' }} component='div'>
+        <ListSubheader
+          sx={{ fontSize: '24px', backgroundColor: '#edffee' }}
+          component='div'
+        >
           {user}'s Garden
           {!userParam && (
             <Chip
