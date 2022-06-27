@@ -17,6 +17,7 @@ import Forum from './pages/Forum';
 import Post from './pages/Post';
 import People from './pages/People';
 import Plant from './pages/Plant';
+import Settings from './pages/Settings';
 
 import {
   ApolloProvider,
@@ -65,6 +66,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/profile/:username' element={<Profile />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/settings' element={<Settings />} />
           <Route path='/people' element={<People />} />
           <Route path='/forum' element={<Forum />} />
           <Route path='/signup' element={<Signup />} />

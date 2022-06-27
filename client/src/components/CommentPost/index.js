@@ -12,6 +12,8 @@ import { ME, QUERY_POST, QUERY_POSTS } from '../../utils/queries';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import Avatar from '@mui/material/Avatar';
+import PersonIcon from '@mui/icons-material/Person';
 
 const Leftitem = styled(Paper)(({ theme }) => ({
   ...theme.typography.body1,
@@ -44,7 +46,7 @@ const CommentPost = ({ post, postText }) => {
       [name]: value,
     });
   };
-  console.log(postId);
+
   const handleFormSubmit = async (event) => {
     //   event.preventDefault();
     try {
@@ -165,10 +167,15 @@ const CommentPost = ({ post, postText }) => {
             if (post.comments.length) {
               return (
                 <div key={index}>
-                  <Typography variant='body2'>
-                    {comments.username} {comments.createdAt}{' '}
+                  <Typography variant='body2' sx={{ display: 'flex' }}>
+                    <Avatar sx={{ mr: 1, width: '30px', height: '30px' }}>
+                      <PersonIcon />
+                    </Avatar>
+                    <Typography sx={{ mt: 0.5 }}>
+                      {comments.username} {comments.createdAt}{' '}
+                    </Typography>
                   </Typography>
-                  <Typography variant='h6' sx={{ pb: 4 }}>
+                  <Typography variant='h6' sx={{ pb: 4, mt: 0.6, ml: '38px' }}>
                     {comments.commentBody}
                   </Typography>
                 </div>

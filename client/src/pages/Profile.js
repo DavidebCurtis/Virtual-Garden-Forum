@@ -102,12 +102,14 @@ const Profile = () => {
             {/* User name and joined info */}
             <Grid item xs={8} sx={{ mt: 1 }}>
               <Container sx={{ ml: 1 }}>
-                <Typography variant='h5'>
-                  <strong>{user.username}</strong>.
-                </Typography>
+                <Typography variant='h5'>{user.username}.</Typography>
+                <Typography>Joined: {user.createdAt}</Typography>
                 <Typography>
-                  <strong>Joined:</strong> {user.createdAt}
+                  <strong>
+                    {user.firstName} {user.lastName}
+                  </strong>
                 </Typography>
+                <Typography>{user.about}</Typography>
                 {userParam && !isfriend ? (
                   <Chip
                     sx={{

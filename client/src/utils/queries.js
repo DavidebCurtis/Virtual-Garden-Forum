@@ -9,6 +9,7 @@ export const QUERY_USER = gql`
       lastName
       username
       email
+      about
       posts {
         _id
         postText
@@ -80,6 +81,7 @@ export const ME = gql`
       lastName
       username
       email
+      about
       posts {
         _id
         postText

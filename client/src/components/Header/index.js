@@ -134,10 +134,10 @@ const Header = () => {
               {/* <MenuItem component={Link} to='/plants'>
                 Plants
               </MenuItem> */}
-              <Divider />
-              <MenuItem component={Link} to='/about'>
+              {/* <Divider /> */}
+              {/* <MenuItem component={Link} to='/about'>
                 About
-              </MenuItem>
+              </MenuItem> */}
             </Menu>
             <Box
               alignItems='center'

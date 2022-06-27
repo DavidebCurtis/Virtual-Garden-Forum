@@ -25,7 +25,7 @@ const ViewAllFriends = ({ open, handleClose }) => {
     variables: { username: userParam },
   });
   const user = data?.me || data?.user || {};
-  console.log(user);
+  // console.log(user);
 
   return (
     <Dialog align='center' open={open} onClose={handleClose}>
