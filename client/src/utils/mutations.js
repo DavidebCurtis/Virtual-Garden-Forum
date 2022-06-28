@@ -113,6 +113,7 @@ export const UPDATE_PLANT = gql`
     $fertilization: String
     $water: String
     $commonName: String!
+    $scientificName: String!
   ) {
     updatePlant(
       plantId: $plantId
@@ -121,6 +122,7 @@ export const UPDATE_PLANT = gql`
       fertilization: $fertilization
       water: $water
       common_name: $commonName
+      scientific_name: $scientificName
     ) {
       _id
       createdAt

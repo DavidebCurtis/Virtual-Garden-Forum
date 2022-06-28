@@ -102,6 +102,7 @@ const typeDefs = gql`
     updatePlant(
       plantId: ID!
       common_name: String
+      scientific_name: String
       usda_zone: String
       pruning: String
       fertilization: String

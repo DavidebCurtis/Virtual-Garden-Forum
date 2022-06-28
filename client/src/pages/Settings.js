@@ -32,7 +32,6 @@ const theme = createTheme({
 export default function Settings() {
   const { loading, data } = useQuery(ME);
   const user = data?.me || data?.user || {};
-  console.log(user);
 
   const [formState, setFormState] = useState({
     username: user.username,
@@ -66,16 +65,24 @@ export default function Settings() {
   return (
     <ThemeProvider theme={theme}>
       <Container
-        sx={{ width: '50%', minHeight: '100vh', backgroundColor: '#eeeeee' }}
+        sx={{
+          minWidth: '100%',
+          minHeight: '100vh',
+          backgroundColor: '#eeeeee',
+          pt: 4,
+        }}
         component='main'
       >
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 4,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            width: '50%',
+            backgroundColor: '#ffffff',
+            margin: 'auto',
+            pt: 5,
           }}
         >
           {/* profile name and picture */}
