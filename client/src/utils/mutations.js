@@ -42,14 +42,18 @@ export const UPDATE_USER = gql`
   mutation UPDATE_USER(
     $about: String
     $email: String
+    $username: String
     $firstName: String
     $lastName: String
+    $password: String
   ) {
     updateUser(
       about: $about
       email: $email
+      username: $username
       firstName: $firstName
       lastName: $lastName
+      password: $password
     ) {
       createdAt
       firstName
