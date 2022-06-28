@@ -58,20 +58,23 @@ const Profile = () => {
   const user = data?.me || data?.user || {};
 
   // this checks if someone is your friend when you go to their page
-  const [isfriend, setIsFriend] = useState();
-  const { loading: friendLoading, data: friendData } = useQuery(ME);
+  const [isfriend, setIsFriend] = useState(false);
+
+  const { data: friendData } = useQuery(ME);
   const friendCheck = friendData?.me || {};
-  const { username } = useParams();
+
   useEffect(() => {
-    if (friendCheck.friends) {
-      for (let i = 0; i < friendCheck.friends.length; i++) {
-        if (friendCheck.friends[i].username === username) {
-          setIsFriend(true);
-        } else {
-          setIsFriend(false);
+    const check = async () => {
+      if (friendCheck.friends) {
+        for (let i = 0; i < friendCheck.friends.length; i++) {
+          if (friendCheck.friends[i].username === userParam) {
+            console.log(friendCheck.friends[i].username === userParam);
+            setIsFriend(true);
+          }
         }
       }
-    }
+    };
+    check();
   });
 
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
