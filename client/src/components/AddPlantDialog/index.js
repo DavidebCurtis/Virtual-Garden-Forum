@@ -49,6 +49,7 @@ export default function AddPlantDialog({ open, handleClose }) {
       },
     }),
   };
+
   //loading icon useEffect
   React.useEffect(() => {
     return () => {
@@ -116,7 +117,9 @@ export default function AddPlantDialog({ open, handleClose }) {
   };
 
   // add plant on sumbission
-  const [addPlant, { error }] = useMutation(ADD_PLANT);
+  const [addPlant, { error }] = useMutation(ADD_PLANT, {
+    refetchQueries: [{ query: ME }],
+  });
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -140,6 +143,7 @@ export default function AddPlantDialog({ open, handleClose }) {
       setPruning('');
       setWatering('');
       setFertilization('');
+      handleClose();
     } catch (e) {
       console.error(e);
     }
@@ -161,19 +165,6 @@ export default function AddPlantDialog({ open, handleClose }) {
               ref={plantFile}
               onChange={onFileChange}
             />
-            {/* <label htmlFor='raised-button-file'>
-              <Button variant='raised' component='span'>
-                Choose File
-              </Button>
-            </label> */}
-
-            {/* <Input
-              ref={plantFile}
-              type='file'
-              // style={{ display: "none" }}
-              onChange={onFileChange}
-              multiple
-            /> */}
 
             <DialogActions>
               <Button

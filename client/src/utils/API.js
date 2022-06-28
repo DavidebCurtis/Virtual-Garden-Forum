@@ -1,28 +1,28 @@
 //user info
 export const getMe = (token) => {
-  return fetch("/api/users/me", {
+  return fetch('/api/users/me', {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
   });
 };
 
 export const createUser = (userData) => {
-  return fetch("/api/users", {
-    method: "POST",
+  return fetch('/api/users', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(userData),
   });
 };
 
 export const loginUser = (userData) => {
-  return fetch("/api/users/login", {
-    method: "POST",
+  return fetch('/api/users/login', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(userData),
   });
@@ -30,10 +30,10 @@ export const loginUser = (userData) => {
 
 //plant info
 export const savePlant = (plantData, token) => {
-  return fetch("/api/users", {
-    method: "PUT",
+  return fetch('/api/users', {
+    method: 'PUT',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(plantData),
@@ -42,7 +42,7 @@ export const savePlant = (plantData, token) => {
 
 export const deletePlant = (plantId, token) => {
   return fetch(`/api/users/plants/${plantId}`, {
-    method: "DELETE",
+    method: 'DELETE',
     headers: {
       authorization: `Bearer ${token}`,
     },
@@ -67,38 +67,39 @@ export const searchPlants = (files) => {
     // console.log(base64files);
     // const API_KEY = process.env.REACT_APP_API_KEY;
     // const API_KEY = "eVh7gMTn4ySBkcg5XnOz13qsTPkurS35JZGG9b9sFHEPajraHT";
+    // qKFByAKZwVPoj1c7cnEGRW40mj0pY1d6vxjnYVlMHsxyV1X4vU
     const data = {
-      api_key: "eVh7gMTn4ySBkcg5XnOz13qsTPkurS35JZGG9b9sFHEPajraHT",
+      api_key: 'qKFByAKZwVPoj1c7cnEGRW40mj0pY1d6vxjnYVlMHsxyV1X4vU',
       images: base64files,
       // modifiers docs: https://github.com/flowerchecker/Plant-id-API/wiki/Modifiers
-      modifiers: ["crops_fast", "similar_images"],
-      plant_language: "en",
+      modifiers: ['crops_fast', 'similar_images'],
+      plant_language: 'en',
       // plant details docs: https://github.com/flowerchecker/Plant-id-API/wiki/Plant-details
       plant_details: [
-        "common_names",
-        "url",
-        "name_authority",
-        "wiki_description",
-        "taxonomy",
-        "synonyms",
+        'common_names',
+        'url',
+        'name_authority',
+        'wiki_description',
+        'taxonomy',
+        'synonyms',
       ],
     };
 
     return new Promise((resolve, reject) => {
-      fetch("https://api.plant.id/v2/identify", {
-        method: "POST",
+      fetch('https://api.plant.id/v2/identify', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Success:", data);
+          console.log('Success:', data);
           resolve(data);
         })
         .catch((error) => {
-          console.log("Error:", data);
+          console.log('Error:', data);
           reject(error);
         });
     });

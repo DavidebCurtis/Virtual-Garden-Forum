@@ -27,7 +27,9 @@ const styles = {
 
 const Profile = () => {
   // this handles adding a friend when you click on the add friend button
-  const [addFriend, { error }] = useMutation(ADD_FRIEND);
+  const [addFriend, { error }] = useMutation(ADD_FRIEND, {
+    refetchQueries: [{ query: ME }],
+  });
   const handleClick = async () => {
     try {
       await addFriend({
@@ -51,6 +53,7 @@ const Profile = () => {
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : ME, {
     variables: { username: userParam },
+    refetchQueries: [{ query: ME }],
   });
   const user = data?.me || data?.user || {};
 
@@ -64,6 +67,8 @@ const Profile = () => {
       for (let i = 0; i < friendCheck.friends.length; i++) {
         if (friendCheck.friends[i].username === username) {
           setIsFriend(true);
+        } else {
+          setIsFriend(false);
         }
       }
     }
@@ -102,7 +107,7 @@ const Profile = () => {
             {/* User name and joined info */}
             <Grid item xs={8} sx={{ mt: 1 }}>
               <Container sx={{ ml: 1 }}>
-                <Typography variant='h5'>{user.username}.</Typography>
+                <Typography variant='h5'>{user.username}</Typography>
                 <Typography>Joined: {user.createdAt}</Typography>
                 <Typography>
                   <strong>
