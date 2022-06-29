@@ -27,7 +27,7 @@ function Copyright(props) {
     >
       {'Copyright © '}
       <Link color='inherit' href='/'>
-        Garden Forum
+        Virtual Garden
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}

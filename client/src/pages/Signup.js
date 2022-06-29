@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -28,7 +28,7 @@ function Copyright(props) {
     >
       {'Copyright © '}
       <Link color='inherit' href='/'>
-        Garden Forum
+        Virtual Garden
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}

@@ -36,103 +36,135 @@ const Carousel = () => {
         </Box>
       </Container> */}
       <Box
-        className="image"
+        className='image'
         style={{
-        backgroundImage: `url(${Greenplant})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed',
-        backgroundSize: "cover",
-        height: "100vh",
-        color: "#f5f5f5",
-        backgroundPosition: 'left',
-        display:'flex',
-        justifyContent:'center',
-        alignItems:'center'
-      }}>
-  {/* Outer Wrapper of Grid content */}
-      <Box sx={{
-          display:'flex',   
-          flexDirection:'column', 
-          width:'50%',
-          backgroundColor: 'rgba(255, 255, 255, .7)',
-          borderRadius: '20px',
-          border:'5px double black' 
-        }}>
-        <Typography gutterBottom variant="h3" component="div" 
-          sx={{
-            width:'100%', 
-            textAlign:'center',
-            fontWeight:'900',
-            color: green[500]}}
-            >Garden Forum</Typography>
-            <Divider orientation="horizontal" variant="middle" flexItem />
-          <Box
+          backgroundImage: `url(${Greenplant})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          height: '100vh',
+          color: '#f5f5f5',
+          backgroundPosition: 'left',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        {/* Outer Wrapper of Grid content */}
+        <Box
           sx={{
             display: 'flex',
-            alignItems: 'center',
-            width: '100%',
-            backgroundColor: 'transparent',
-            justifyContent:'space-around',
-            my:"50px"
-            }}>
-          <Box sx={{
-            width:'50%', 
-            display:'flex', 
-            flexDirection:'column', 
-            alignItems:'center'
-            }}>
-            <YardIcon sx={{color:'black',fontSize:'100px'}}/>
-            <Typography gutterBottom variant="h4" component="div" 
+            flexDirection: 'column',
+            width: '50%',
+            backgroundColor: 'rgba(255, 255, 255, .7)',
+            borderRadius: '20px',
+            border: '5px double black',
+          }}
+        >
+          <Typography
+            gutterBottom
+            variant='h3'
+            component='div'
             sx={{
-              width:'80%', 
-              textAlign:'center',
-              fontWeight:'bold',
-              py:'20px',
-              color: 'black'}}
+              width: '100%',
+              textAlign: 'center',
+              fontWeight: '900',
+              color: green[500],
+            }}
+          >
+            Virtual Garden
+          </Typography>
+          <Divider orientation='horizontal' variant='middle' flexItem />
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              width: '100%',
+              backgroundColor: 'transparent',
+              justifyContent: 'space-around',
+              my: '50px',
+            }}
+          >
+            <Box
+              sx={{
+                width: '50%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <YardIcon sx={{ color: 'black', fontSize: '100px' }} />
+              <Typography
+                gutterBottom
+                variant='h4'
+                component='div'
+                sx={{
+                  width: '80%',
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  py: '20px',
+                  color: 'black',
+                }}
               >
                 Plant Database
               </Typography>
-            <Typography gutterBottom variant="h5" component="div" 
-            sx={{
-              width:'80%', 
-              textAlign:'center',
-              px:'20px',
-              color: 'black'
-            }}
+              <Typography
+                gutterBottom
+                variant='h5'
+                component='div'
+                sx={{
+                  width: '80%',
+                  textAlign: 'center',
+                  px: '20px',
+                  color: 'black',
+                }}
               >
-                Identify plants in your landscape or garden using your camera and build a virtual garden to help maintain them.
+                Identify plants in your landscape or garden using your camera
+                and build a virtual garden to help maintain them.
               </Typography>
-          </Box>
-          <Divider orientation="vertical" variant="middle" flexItem />
-          <Box sx={{
-            width:'50%', 
-            display:'flex', 
-            flexDirection:'column', 
-            alignItems:'center'
-            }}>
-            <HistoryEduIcon sx={{color:'black',fontSize:'100px'}}/>
-            <Typography gutterBottom variant="h4" component="div" 
-            sx={{
-              width:'80%', 
-              textAlign:'center',
-              fontWeight:'bold',
-              py:'20px',
-              color: 'black'}}
+            </Box>
+            <Divider orientation='vertical' variant='middle' flexItem />
+            <Box
+              sx={{
+                width: '50%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <HistoryEduIcon sx={{ color: 'black', fontSize: '100px' }} />
+              <Typography
+                gutterBottom
+                variant='h4'
+                component='div'
+                sx={{
+                  width: '80%',
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  py: '20px',
+                  color: 'black',
+                }}
               >
                 Forum
               </Typography>
-            <Typography gutterBottom variant="h5" component="div" 
-            sx={{
-              width:'100%', 
-              textAlign:'center',
-              px:'20px',
-              color: 'black'}}
-              >Connect with other garden enthusiasts to discover their secrets to 
-              maintaining a beautiful,  lush landscape.</Typography>
+              <Typography
+                gutterBottom
+                variant='h5'
+                component='div'
+                sx={{
+                  width: '100%',
+                  textAlign: 'center',
+                  px: '20px',
+                  color: 'black',
+                }}
+              >
+                Connect with other garden enthusiasts to discover their secrets
+                to maintaining a beautiful, lush landscape.
+              </Typography>
+            </Box>
           </Box>
         </Box>
       </Box>
-    </Box>
     </ThemeProvider>
   );
 };
