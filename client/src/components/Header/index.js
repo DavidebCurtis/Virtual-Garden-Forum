@@ -74,7 +74,7 @@ const Header = () => {
                 cursor: 'pointer',
               }}
             >
-              Garden Forum
+              Virtual Garden
             </Typography>
             <Typography
               style={{ textDecoration: 'none' }}
