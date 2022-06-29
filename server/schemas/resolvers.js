@@ -163,12 +163,14 @@ const resolvers = {
           water,
           common_name,
           scientific_name,
+          image_path,
         } = args;
         console.log(common_name);
         const plant = await Plant.findByIdAndUpdate(
           plantId,
           {
             common_name: common_name,
+            image_path: image_path,
             scientific_name: scientific_name,
             usda_zone: usda_zone,
             pruning: pruning,

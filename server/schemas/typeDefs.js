@@ -101,6 +101,7 @@ const typeDefs = gql`
     ): Plant
     updatePlant(
       plantId: ID!
+      image_path: String!
       common_name: String
       scientific_name: String
       usda_zone: String
