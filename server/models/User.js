@@ -37,7 +37,7 @@ const userSchema = new Schema(
     },
     about: {
       type: String,
-      maxlength: 280
+      maxlength: 480,
     },
     posts: [
       {
