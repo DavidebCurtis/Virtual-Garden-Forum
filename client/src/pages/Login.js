@@ -71,7 +71,7 @@ export default function Login() {
       });
 
       Auth.login(data.login.token);
-      if (data.login.token) navigate('/profile');
+      // if (data.login.token) navigate('/profile');
     } catch (e) {
       console.error(e);
     }
